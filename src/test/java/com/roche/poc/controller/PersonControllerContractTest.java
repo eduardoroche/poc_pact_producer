@@ -15,11 +15,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRestPactRunner.class)
@@ -80,6 +75,7 @@ public class PersonControllerContractTest {
         //Arrange
         Long id = 1l;
         Person person = new Person();
+        person.setId(id);
         person.setName("Roche");
 
         //Act
