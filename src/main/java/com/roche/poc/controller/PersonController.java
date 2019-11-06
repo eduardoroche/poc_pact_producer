@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class PersonController {
 
     @PostMapping
-    ResponseEntity<Void> savePerson(@RequestBody Person person) {
+    ResponseEntity<String> savePerson(@RequestBody Person person) {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

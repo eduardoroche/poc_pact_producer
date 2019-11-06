@@ -10,6 +10,7 @@ import au.com.dius.pact.provider.spring.target.SpringBootHttpTarget;
 import com.roche.poc.config.Application;
 import com.roche.poc.entity.Person;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
@@ -36,10 +37,10 @@ public class PersonControllerContractTest {
         //Arrange
         Person person = new Person();
         person.setName("Roche");
-        ResponseEntity<Void> voidResponse = ResponseEntity.status(HttpStatus.CREATED).build();
+        ResponseEntity<String> response = ResponseEntity.status(HttpStatus.CREATED).build();
 
         //Act
-        when(personController.savePerson(person)).thenReturn(voidResponse);
+        when(personController.savePerson(person)).thenReturn(response);
 
     }
 
@@ -62,10 +63,11 @@ public class PersonControllerContractTest {
         Long id = 1l;
         Person person = new Person();
         person.setName("Roche");
-        ResponseEntity<Void> voidResponse = ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        ResponseEntity<Void> voidResponse = Mockito.spy(ResponseEntity.status(HttpStatus.NO_CONTENT).build());
 
         //Act
         when(personController.updatePerson(1l, person)).thenReturn(voidResponse);
+        when(voidResponse.getStatusCode().value()).thenReturn(204);
 
     }
 
