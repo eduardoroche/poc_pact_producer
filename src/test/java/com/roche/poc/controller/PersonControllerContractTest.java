@@ -84,7 +84,7 @@ public class PersonControllerContractTest {
         ResponseEntity<Void> voidResponse = Mockito.spy(ResponseEntity.status(HttpStatus.NO_CONTENT).build());
 
         //Act
-        mockMvc.perform(put("/person")
+        mockMvc.perform(put("/person/{id}", id)
                 .content(objectMapper.writeValueAsString(person))
                 .contentType(APPLICATION_JSON_UTF8))
                 .andExpect(status().isNoContent());
