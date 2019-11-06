@@ -37,7 +37,7 @@ public class PersonControllerContractTest {
         //Arrange
         Person person = new Person();
         person.setName("Roche");
-       // ResponseEntity<String> response = ResponseEntity.status(HttpStatus.CREATED).build();
+        ResponseEntity<String> response = ResponseEntity.status(HttpStatus.CREATED).build();
 
         //Act
         when(personController.savePerson(person)).thenReturn(204);
@@ -67,7 +67,7 @@ public class PersonControllerContractTest {
 
         //Act
         when(personController.updatePerson(1l, person)).thenReturn(voidResponse);
-        when(voidResponse.getStatusCode().value()).thenReturn(204);
+        when(voidResponse.getStatusCode()).thenReturn(HttpStatus.NO_CONTENT);
 
     }
 
