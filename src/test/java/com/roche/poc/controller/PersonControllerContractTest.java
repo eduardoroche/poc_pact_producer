@@ -37,10 +37,10 @@ public class PersonControllerContractTest {
         //Arrange
         Person person = new Person();
         person.setName("Roche");
-        ResponseEntity<String> response = ResponseEntity.status(HttpStatus.CREATED).build();
+       // ResponseEntity<String> response = ResponseEntity.status(HttpStatus.CREATED).build();
 
         //Act
-        when(personController.savePerson(person)).thenReturn(response);
+        when(personController.savePerson(person)).thenReturn(204);
 
     }
 
