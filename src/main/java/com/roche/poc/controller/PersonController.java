@@ -16,7 +16,13 @@ public class PersonController {
 
     @GetMapping("/{id}")
     ResponseEntity<Person> getPerson(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(new Person(), HttpStatus.OK);
+        if (Long.valueOf(1).equals(id)) {
+            Person person = new Person();
+            person.setId(1L);
+            person.setName("Roche");
+            return new ResponseEntity<>(person, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/{id}")
