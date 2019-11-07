@@ -94,13 +94,8 @@ public class PersonControllerContractTest {
     @State("A person is requested with an existing id")
     public void shouldReturnPersonAndReturnOkAsHttpStatus() throws Exception  {
 
-        PersonController personController = mock(PersonController.class);
-
         //Arrange
         Long id = 1l;
-        Person person = new Person();
-        person.setId(id);
-        person.setName("Roche");
 
         //Act
         mockMvc.perform(get("/person/{id}", id))
