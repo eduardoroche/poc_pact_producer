@@ -2,6 +2,7 @@ package com.roche.poc.controller;
 
 import com.roche.poc.entity.Person;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class PersonController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     ResponseEntity<Void> updatePerson(@PathVariable("id") Long id, @RequestBody Person person) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
