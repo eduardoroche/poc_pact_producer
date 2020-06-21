@@ -37,7 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
         classes = Application.class)
 @AutoConfigureMockMvc
-@PactBroker(host = "${pactbroker.url}", port = "${pactbroker.port}", tags = "${pactbroker.tags:master}")
+@PactBroker(host = "${pactbroker.url}", port = "${pactbroker.port}", tags = "${pactbroker.tags:prod}")
 public class PersonControllerContractTest {
 
     @TestTarget
@@ -103,5 +103,6 @@ public class PersonControllerContractTest {
                 .andExpect(content().json("{\"id\":1,\"name\":\"Roche\"}"));
 
     }
+
 
 }
