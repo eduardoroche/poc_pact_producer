@@ -20,7 +20,7 @@ pipeline {
       steps {
       // it is possible set prod as tag
       echo "version ${params.pactConsumerTags}"
-		sh "mvn clean verify -Dpact.provider.version=${GIT_COMMIT} -Dpactbroker.url=${PACT_BROKER_URL} -Dpactbroker.port=${PACT_BROKER_PORT} -Dpact.verifier.publishResults=true  -Dpactbroker.tags=prod"
+		sh "mvn clean verify -Dpact.provider.version=${GIT_COMMIT} -Dpactbroker.url=${PACT_BROKER_URL} -Dpactbroker.port=${PACT_BROKER_PORT} -Dpact.verifier.publishResults=true  -Dpactbroker.tags=${params.pactConsumerTags}"
       }
     }
     stage('Check Pact Verifications') {
@@ -30,7 +30,7 @@ pipeline {
         dir('pact/bin') {
             // --to prod -- set it in case you want to deploy the PROD
             // --to prod could be master and it check for consumers that committed to this tag, if it pass, so everything is alright, if it does not, the consumer has not committed so far.
-          sh "./pact-broker can-i-deploy -a person-provider -b http://pact_broker -e ${GIT_COMMIT} --to prod"
+          sh "./pact-broker can-i-deploy -a person-provider -b http://pact_broker -e ${GIT_COMMIT}"
         //  sh "./pact-broker can-i-deploy -a user-service-messaging -b http://pact_broker -e ${GIT_COMMIT} --to prod"
         }
       }
