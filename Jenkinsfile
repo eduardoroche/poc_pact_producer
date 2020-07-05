@@ -18,14 +18,15 @@ pipeline {
   stages {
     stage ('Build') {
       steps {
+      sh 'curl -LO https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v1.61.1/pact-1.61.1-linux-x86_64.tar.gz'
+      sh 'tar xzf pact-1.61.1-linux-x86_64.tar.gz'
       // it is possible set prod as tag
 		sh "mvn clean verify -Dpact.provider.version=${GIT_COMMIT} -Dpactbroker.url=${PACT_BROKER_URL} -Dpactbroker.port=${PACT_BROKER_PORT} -Dpact.verifier.publishResults=true  -Dpactbroker.tags=${params.pactConsumerTags}"
       }
     }
     stage('Check Pact Verifications') {
       steps {
-        sh 'curl -LO https://github.com/pact-foundation/pact-ruby-standalone/releases/download/v1.61.1/pact-1.61.1-linux-x86_64.tar.gz'
-        sh 'tar xzf pact-1.61.1-linux-x86_64.tar.gz'
+
         dir('pact/bin') {
             // --to prod -- set it in case you want to deploy the PROD
             // --to prod could be master and it check for consumers that committed to this tag, if it pass, so everything is alright, if it does not, the consumer has not committed so far.
@@ -45,7 +46,7 @@ pipeline {
     stage('Tag Pact') {
       steps {
         dir('pact/bin') {
-          sh "./pact-broker create-version-tag -a person-provider -b http://pact_broker -e ${GIT_COMMIT} -t poc"
+          sh "./pact-broker create-version-tag -a person-provider -b http://pact_broker -e ${GIT_COMMIT} -t prod-1"
         }
       }
     }
