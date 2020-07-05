@@ -87,7 +87,7 @@ public class PersonControllerContractTest {
         mockMvc.perform(put("/person/{id}", id)
                 .content(objectMapper.writeValueAsString(person))
                 .contentType(APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
 
     }
 
