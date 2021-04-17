@@ -20,7 +20,7 @@ public class PersonController {
         if (Long.valueOf(1).equals(id)) {
             Person person = new Person();
             person.setId(1L);
-            person.setName("Roche");
+            person.setName(1);
             return new ResponseEntity<>(person, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);

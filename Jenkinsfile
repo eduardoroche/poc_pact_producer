@@ -30,7 +30,7 @@ pipeline {
         dir('pact/bin') {
             // --to prod -- set it in case you want to deploy the PROD
             // --to prod could be master and it check for consumers that committed to this tag, if it pass, then everything is alright, if it does not, the consumer has not been committed.
-         // sh "./pact-broker can-i-deploy -a person-provider -b http://pact_broker -e ${GIT_COMMIT} --to ${params.pactConsumerTags}"
+             //sh "./pact-broker can-i-deploy --retry-while-unknown=12 --retry-interval=10 -a person-provider -b http://pact_broker -e ${GIT_COMMIT} --to ${params.pactConsumerTags}"
         //  sh "./pact-broker can-i-deploy -a user-service-messaging -b http://pact_broker -e ${GIT_COMMIT} --to prod"
         }
       }
