@@ -42,7 +42,7 @@ public class PersonControllerContractTest {
 
         //Arrange
         Person person = new Person();
-        person.setName(1);
+        person.setName("Roche");
 
         //Act
         mockMvc.perform(post("/person")
@@ -70,7 +70,7 @@ public class PersonControllerContractTest {
         Long id = 1l;
         Person person = new Person();
         person.setId(id);
-        person.setName(1);
+        person.setName("Roche");
 
         //Act
         mockMvc.perform(put("/person/{id}", id)
@@ -89,7 +89,7 @@ public class PersonControllerContractTest {
         //Act
         mockMvc.perform(get("/person/{id}", id))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"id\":1,\"name\":1}"));
+                .andExpect(content().json("{\"id\":1,\"name\":\"Roche\"}"));
 
     }
 

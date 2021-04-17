@@ -3,7 +3,7 @@ package com.roche.poc.entity;
 public class Person {
 
     private Long id;
-    private int name;
+    private String name;
 
     public Long getId() {
         return id;
@@ -13,11 +13,11 @@ public class Person {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
