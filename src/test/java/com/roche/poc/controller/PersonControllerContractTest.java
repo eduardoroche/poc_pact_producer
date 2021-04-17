@@ -59,7 +59,7 @@ public class PersonControllerContractTest {
 
         //Act
         mockMvc.perform(delete("/person/{id}", id))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
 
     }
 
