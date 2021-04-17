@@ -89,7 +89,7 @@ public class PersonControllerContractTest {
         //Act
         mockMvc.perform(get("/person/{id}", id))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"id\":1,\"name\":\"Roche\"}"));
+                .andExpect(content().json("{\"id\":1,\"name\":1}"));
 
     }
 
