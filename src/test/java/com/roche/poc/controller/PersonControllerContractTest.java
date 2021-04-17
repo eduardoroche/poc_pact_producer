@@ -7,28 +7,17 @@ import au.com.dius.pact.provider.junit.target.Target;
 import au.com.dius.pact.provider.junit.target.TestTarget;
 import au.com.dius.pact.provider.spring.SpringRestPactRunner;
 import au.com.dius.pact.provider.spring.target.SpringBootHttpTarget;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.roche.poc.config.Application;
 import com.roche.poc.entity.Person;
-import org.junit.Assert;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -70,12 +59,12 @@ public class PersonControllerContractTest {
 
         //Act
         mockMvc.perform(delete("/person/{id}", id))
-                .andExpect(status().isOk());
+                .andExpect(status().isNoContent());
 
     }
 
     @State("A person is updated with an existing id")
-    public void shouldUpdatePersonAndReturnNoContentAsHttpStatus() throws Exception  {
+    public void shouldUpdatePersonAndReturnNoContentAsHttpStatus() throws Exception {
 
         //Arrange
         Long id = 1l;
@@ -92,7 +81,7 @@ public class PersonControllerContractTest {
     }
 
     @State("A person is requested with an existing id")
-    public void shouldReturnPersonAndReturnOkAsHttpStatus() throws Exception  {
+    public void shouldReturnPersonAndReturnOkAsHttpStatus() throws Exception {
 
         //Arrange
         Long id = 1l;
