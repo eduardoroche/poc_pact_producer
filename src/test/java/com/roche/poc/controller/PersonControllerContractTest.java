@@ -48,7 +48,7 @@ public class PersonControllerContractTest {
         mockMvc.perform(post("/person")
                 .content(objectMapper.writeValueAsString(person))
                 .contentType(APPLICATION_JSON_UTF8))
-                .andExpect(status().isCreated());
+                .andExpect(status().isNoContent());
     }
 
     @State("A person is deleted with an existing id")
