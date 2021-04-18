@@ -12,7 +12,7 @@ public class PersonController {
 
     @PostMapping
     ResponseEntity<Void> savePerson(@RequestBody Person person) {
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
