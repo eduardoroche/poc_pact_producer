@@ -42,7 +42,7 @@ public class PersonControllerContractTest {
 
         //Arrange
         Person person = new Person();
-        person.setName("Rocheeee");
+        person.setName(1L);
 
         //Act
         mockMvc.perform(post("/person")
@@ -71,7 +71,7 @@ public class PersonControllerContractTest {
         Long id = 1l;
         Person person = new Person();
         person.setId(id);
-        person.setName("Roche");
+        person.setName(1L);
 
         //Act
         mockMvc.perform(put("/person/{id}", id)
