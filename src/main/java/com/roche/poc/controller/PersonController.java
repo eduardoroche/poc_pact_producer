@@ -16,7 +16,7 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Person> getPerson(@PathVariable("id") String id) {
+    ResponseEntity<Person> getPerson(@PathVariable("id") Long id) {
         if (Long.valueOf(1).equals(id)) {
             Person person = new Person();
             person.setId(1L);
