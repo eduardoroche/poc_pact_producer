@@ -42,7 +42,7 @@ public class PersonControllerContractTest {
 
         //Arrange
         Person person = new Person();
-        person.setName("Roche");
+        person.setName("Rocheeee");
 
         //Act
         mockMvc.perform(post("/person")
